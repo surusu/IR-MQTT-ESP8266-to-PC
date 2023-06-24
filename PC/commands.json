@@ -1,0 +1,27 @@
+[
+  {
+    "name": "default",
+    "Keys": [
+      {
+        "Command": "ff40bf",
+        "key": "VOLUME_UP"
+      },
+      {
+        "Command": "ff8a75",
+        "key": "VOLUME_DOWN"
+      },
+      {
+        "Command": "ff58a7",
+        "key": "MEDIA_PLAY_PAUSE"
+      },
+      {
+        "Command": "ff827d",
+        "key": "MEDIA_STOP"
+      },
+      {
+        "Command": "ff50af",
+        "Function": "debugApps"
+      }
+    ]
+  }
+]
