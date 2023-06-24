@@ -10,8 +10,7 @@ using WindowsInput;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-//using Windows.UI.Notifications;
-//using System.Windows.Forms;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace IR_Controller
 {
@@ -35,7 +34,7 @@ namespace IR_Controller
 
         static InputSimulator inputSimulator = new InputSimulator();
 
-        static float temperature = 0;
+        static float temperature = float.NaN;
 
 
         static void Main(string[] args)
@@ -127,8 +126,6 @@ namespace IR_Controller
                     Console.WriteLine("Empty command received: " + command);
                 }
             }
-
-
         }
 
         static Process GetActiveProcess()
@@ -179,8 +176,6 @@ namespace IR_Controller
             {
                 Console.WriteLine($"Invalid key '{keyInfo.Key}'");
             }
-
-
         }
 
         static List<ProcessInfo> LoadProcessInfos(string filePath)
@@ -201,13 +196,21 @@ namespace IR_Controller
         {
             Process activeProcess = GetActiveProcess();
             string activeAppName = activeProcess.ProcessName.ToLower();
-            Console.WriteLine("=== DebugInfo ===");
+            Console.WriteLine("===== DebugInfo =====");
             Console.WriteLine($"Current Apps: {activeAppName}");
+            Console.WriteLine("=====================");
         }
 
         public static void PrintTemperature()
         {
-            Console.WriteLine($"=== Temperature: {temperature.ToString("F2")}C ===");
+            if (!float.IsNaN(temperature))
+            {
+                Console.WriteLine($"Temperature: {temperature.ToString("F2")}°C");
+                ShowNotification("ESP8266", $"Temperature: {temperature.ToString("F2")}°C");
+            } else
+            {
+                Console.WriteLine("Values were not obtained!");
+            }
         }
 
         public static (string type, object value) ParseJson(string jsonString)
@@ -218,13 +221,17 @@ namespace IR_Controller
             {
                 string type = property.Name;
                 JToken value = property.Value;
-
                 return (type, value);
             }
-
             return (null, null);
         }
-
+     
+        public static void ShowNotification(string title, string message)
+        {
+            var notify1 = new ToastContentBuilder().AddText("ESP8266").AddText($"Temperature: {temperature.ToString("F2")}°C");
+            //.AddHeroImage(new Uri("https://cdn-icons-png.flaticon.com/64/10398/10398851.png"));
+            notify1.Show();
+        }
 
     }
 
