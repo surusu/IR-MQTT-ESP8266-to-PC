@@ -26,8 +26,10 @@ namespace IR_Controller
         class KeyInfo
         {
             public string Command { get; set; }
-            public string Key { get; set; }
+            public List<string> Key { get; set; }
             public string Function { get; set; }
+            public bool HoldKeys { get; set; }
+            public bool KeyReleased { get; set; }
         }
 
         static List<ProcessInfo> processInfos;
@@ -72,7 +74,7 @@ namespace IR_Controller
                                 KeyInfo keyInfo = processInfo.Keys.FirstOrDefault(k => k.Command == ircode);
                                 if (keyInfo != null)
                                 {
-                                    SimulateKey(keyInfo, ircode, activeAppName);
+                                    SimulateKey(keyInfo, activeAppName);
                                 }
                                 else
                                 {
@@ -120,7 +122,7 @@ namespace IR_Controller
                 KeyInfo keyInfo = processInfo.Keys.FirstOrDefault(k => k.Command == command);
                 if (keyInfo != null)
                 {
-                    SimulateKey(keyInfo, command);
+                    SimulateKey(keyInfo);
                 } else
                 {
                     Console.WriteLine("Empty command received: " + command);
@@ -136,19 +138,70 @@ namespace IR_Controller
             return Process.GetProcessById((int)processId);
         }
 
-        static void SimulateKey(KeyInfo keyInfo, string command = "N/A", string appname = "Default")
+        static void SimulateKey(KeyInfo keyInfo, string appname = "Default")
         {
-            Console.WriteLine($"{appname}: Command '{command}' - Action '{keyInfo.Key}'");
+            string command = keyInfo.Command ?? "N/A";
 
-            /*if (Enum.TryParse(key, out VirtualKeyCode keyCode))
+                //string command = "N/A",
+
+            //VirtualKeyCode.TAB
+            if (keyInfo.Key != null)
+            //    if (keyInfo.Key != null && keyInfo.Key.Count > 0)
             {
-                inputSimulator.Keyboard.KeyPress(keyCode);
+                Console.WriteLine($"{appname}: Command '{command}' - Action '{String.Join(", ", keyInfo.Key.ToArray())}'");
+                if (keyInfo.HoldKeys)
+                {
+                    if (!keyInfo.KeyReleased)
+                    {
+                        foreach (string key in keyInfo.Key)
+                        {
+                            if (Enum.TryParse(key, out VirtualKeyCode keyCode))
+                            {
+                                inputSimulator.Keyboard.KeyDown(keyCode);
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Invalid key '{key}'");
+                            }
+                        }
+
+                        keyInfo.KeyReleased = true;
+                        return;
+                    }
+                    else
+                    {
+                        foreach (string key in keyInfo.Key)
+                        {
+                            if (Enum.TryParse(key, out VirtualKeyCode keyCode))
+                            {
+                                inputSimulator.Keyboard.KeyUp(keyCode);
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Invalid key '{key}'");
+                            }
+                        }
+
+                        keyInfo.KeyReleased = false;
+                        return;
+                    }
+                }
+                else
+                {
+                    foreach (string key in keyInfo.Key)
+                    {
+                        if (Enum.TryParse(key, out VirtualKeyCode keyCode))
+                        {
+                            inputSimulator.Keyboard.KeyPress(keyCode);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Invalid key '{key}'");
+                        }
+                    }
+                    return;
+                }
             }
-            else
-            {
-                Console.WriteLine($"Invalid key '{key}'");
-            }*/
-
 
             if (!string.IsNullOrEmpty(keyInfo.Function))
             {
@@ -157,7 +210,7 @@ namespace IR_Controller
 
                 if (method != null)
                 {
-                    Console.WriteLine($"Executing function '{keyInfo.Function}'");
+                    Console.WriteLine($"{appname}: Command '{command}' - Executing function '{keyInfo.Function}'");
                     method.Invoke(null, new object[] { });
                     return;
                 }
@@ -167,6 +220,9 @@ namespace IR_Controller
                 }
             }
 
+            Console.WriteLine($"Invalid command '{keyInfo.Command}'");
+
+            /*
             if (Enum.TryParse(keyInfo.Key, out VirtualKeyCode keyCode))
             {
                 //VirtualKeyCode.VOLUME_MUTE
@@ -175,7 +231,7 @@ namespace IR_Controller
             else
             {
                 Console.WriteLine($"Invalid key '{keyInfo.Key}'");
-            }
+            }*/
         }
 
         static List<ProcessInfo> LoadProcessInfos(string filePath)

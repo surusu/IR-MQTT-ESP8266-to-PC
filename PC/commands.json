@@ -4,19 +4,23 @@
     "Keys": [
       {
         "Command": "ff40bf",
-        "key": "VOLUME_UP"
+        "key": ["VOLUME_UP"],
+        "HoldKeys": false
       },
       {
         "Command": "ff8a75",
-        "key": "VOLUME_DOWN"
+        "key": ["VOLUME_DOWN"],
+        "HoldKeys": false
       },
       {
         "Command": "ff58a7",
-        "key": "MEDIA_PLAY_PAUSE"
+        "key": ["MEDIA_PLAY_PAUSE"],
+        "HoldKeys": false
       },
       {
         "Command": "ff827d",
-        "key": "MEDIA_STOP"
+        "key": ["MEDIA_STOP"],
+        "HoldKeys": false
       },
       {
         "Command": "ff50af",
@@ -28,79 +32,108 @@
       },
       {
         "Command": "ff18e7",
-        "key": "LEFT"
+        "key": ["LEFT"],
+        "HoldKeys": false
       },
       {
         "Command": "ffe01f",
-        "key": "UP"
+        "key": ["UP"],
+        "HoldKeys": false
       },
       {
         "Command": "fff00f",
-        "key": "RIGHT"
+        "key": ["RIGHT"],
+        "HoldKeys": false
       },
       {
         "Command": "ff7887",
-        "key": "DOWN"
+        "key": ["DOWN"],
+        "HoldKeys": false
       },
       {
         "Command": "ffc03f",
-        "key": "NUMPAD0"
+        "key": ["NUMPAD0"],
+        "HoldKeys": false
       },
       {
         "Command": "ff8877",
-        "key": "NUMPAD1"
+        "key": ["NUMPAD1"],
+        "HoldKeys": false
       },
       {
         "Command": "ffa857",
-        "key": "NUMPAD2"
+        "key": ["NUMPAD2"],
+        "HoldKeys": false
       },
       {
         "Command": "ff02fd",
-        "key": "NUMPAD3"
+        "key": ["NUMPAD3"],
+        "HoldKeys": false
       },
       {
         "Command": "ff9a65",
-        "key": "NUMPAD4"
+        "key": ["NUMPAD4"],
+        "HoldKeys": false
       },
       {
         "Command": "ff10ef",
-        "key": "NUMPAD5"
+        "key": ["NUMPAD5"],
+        "HoldKeys": false
       },
       {
         "Command": "ff906f",
-        "key": "NUMPAD6"
+        "key": ["NUMPAD6"],
+        "HoldKeys": false
       },
       {
         "Command": "ff52ad",
-        "key": "NUMPAD7"
+        "key": ["NUMPAD7"],
+        "HoldKeys": false
       },
       {
         "Command": "ffe817",
-        "key": "NUMPAD8"
+        "key": ["NUMPAD8"],
+        "HoldKeys": false
       },
       {
         "Command": "ff9867",
-        "key": "NUMPAD9"
+        "key": ["NUMPAD9"],
+        "HoldKeys": false
       },
       {
         "Command": "ff22dd",
-        "key": "RETURN"
+        "key": ["RETURN"],
+        "HoldKeys": false
       },
       {
         "Command": "ffea15",
-        "key": "VOLUME_MUTE"
+        "key": ["VOLUME_MUTE"],
+        "HoldKeys": false
       },
       {
         "Command": "ffb24d",
-        "key": "MEDIA_PREV_TRACK"
+        "key": ["MEDIA_PREV_TRACK"],
+        "HoldKeys": false
       },
       {
         "Command": "ff20df",
-        "key": "MEDIA_NEXT_TRACK"
+        "key": ["MEDIA_NEXT_TRACK"],
+        "HoldKeys": false
+      },
+      {
+        "Command": "ff7a85",
+        "key": ["MENU","VK_L"],
+        "HoldKeys": false
+      },
+      {
+        "Command": "ffa05f",
+        "key": ["MENU","TAB"],
+        "HoldKeys": true
       },
       {
         "Command": "",
-        "key": ""
+        "key": [""],
+        "HoldKeys": false
       }
     ]
   },
@@ -109,11 +142,13 @@
     "Keys":[
       {
         "Command":"ffca35",
-        "Key":"PRIOR"
+        "Key":["PRIOR"],
+        "HoldKeys": false
       },
       {
         "Command":"ff4ab5",
-        "Key":"NEXT"
+        "Key":["NEXT"],
+        "HoldKeys": false
       }
     ]
   }
