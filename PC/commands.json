@@ -20,7 +20,100 @@
       },
       {
         "Command": "ff50af",
-        "Function": "debugApps"
+        "Function": "DebugInfo"
+      },
+      {
+        "Command": "ff609f",
+        "Function": "PrintTemperature"
+      },
+      {
+        "Command": "ff18e7",
+        "key": "LEFT"
+      },
+      {
+        "Command": "ffe01f",
+        "key": "UP"
+      },
+      {
+        "Command": "fff00f",
+        "key": "RIGHT"
+      },
+      {
+        "Command": "ff7887",
+        "key": "DOWN"
+      },
+      {
+        "Command": "ffc03f",
+        "key": "NUMPAD0"
+      },
+      {
+        "Command": "ff8877",
+        "key": "NUMPAD1"
+      },
+      {
+        "Command": "ffa857",
+        "key": "NUMPAD2"
+      },
+      {
+        "Command": "ff02fd",
+        "key": "NUMPAD3"
+      },
+      {
+        "Command": "ff9a65",
+        "key": "NUMPAD4"
+      },
+      {
+        "Command": "ff10ef",
+        "key": "NUMPAD5"
+      },
+      {
+        "Command": "ff906f",
+        "key": "NUMPAD6"
+      },
+      {
+        "Command": "ff52ad",
+        "key": "NUMPAD7"
+      },
+      {
+        "Command": "ffe817",
+        "key": "NUMPAD8"
+      },
+      {
+        "Command": "ff9867",
+        "key": "NUMPAD9"
+      },
+      {
+        "Command": "ff22dd",
+        "key": "RETURN"
+      },
+      {
+        "Command": "ffea15",
+        "key": "VOLUME_MUTE"
+      },
+      {
+        "Command": "ffb24d",
+        "key": "MEDIA_PREV_TRACK"
+      },
+      {
+        "Command": "ff20df",
+        "key": "MEDIA_NEXT_TRACK"
+      },
+      {
+        "Command": "",
+        "key": ""
+      }
+    ]
+  },
+  {
+    "Name": "browser",
+    "Keys":[
+      {
+        "Command":"ffca35",
+        "Key":"PRIOR"
+      },
+      {
+        "Command":"ff4ab5",
+        "Key":"NEXT"
       }
     ]
   }
