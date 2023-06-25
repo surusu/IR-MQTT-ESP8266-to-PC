@@ -10,16 +10,16 @@
 #include <ArduinoJson.h>
 
 // Wi-Fi credentials
-const char* ssid = "Xiaomi_8411";
-const char* password = "ravioliravioli";
+const char* ssid = "";
+const char* password = "";
 
 const char* serverIP = "192.168.0.106";  // Replace with the IP address of your C# program
 
 // MQTT broker details
-const char* mqttServer = "207e30654cb742469fdcd3cf4664fe38.s2.eu.hivemq.cloud";
+const char* mqttServer = "";
 const int mqttPort = 8883;
-const char* mqttUsername = "esp8266wol";
-const char* mqttPassword = "NAV-675-stj-yr2";
+const char* mqttUsername = "";
+const char* mqttPassword = "";
 const char* mqttTopicIN = "ESP8266Command";
 const char* mqttTopicOUT = "ESP8266Thermometer";
 const char* mqttClientId = "ESP8266Client";
